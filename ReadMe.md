@@ -1,121 +1,158 @@
-# Coverage
+# Data Structures and Algorithms
+
+This repository contains comprehensive coverage of various Data Structures and Algorithms topics.
+
+## Table of Contents
+- [Pre-Midterm Topics](#pre-midterm-topics)
+- [Midterm Topics](#midterm-topics)
+- [Pre-Final Topics](#pre-final-topics)
+- [Final Topics](#final-topics)
 
 ## Pre-Midterm Topics
 
-#### 1. Abstract Data Type (ADT)
+### 1. Abstract Data Type (ADT)
 
-#### 2. ADT List
+### 2. ADT List
+- List vs ADT List comparison
+- **List Operations:**
+  - Initialize
+  - Insert
+  - Delete
+  - Member
+  - Locate
+  - Other operations
 
-- Differentiate a List from an ADT List.
-    - **List Operations:** Initialize, insert, delete, member, locate, and other operations
+#### Implementations of ADT List
 
-- **Implementations of ADT List**
+1. **Array Implementation** (4 versions)
+   - Version 1: List as structure with array and count
+   - Version 2: List as pointer to structure
+   - Version 3: List as structure with dynamic array
+   - Version 4: List as pointer to structure with dynamic array
 
-    **a. Array Implementation (4 versions)**
-    - **Version 1:** List is a structure containing an array and variable count. 
-    
-    **Note:** count represents the actual number of elements in the array. If *MAX* is the size of the array, count <= MAX.
-    
-    - **Version 2:** List is a pointer to a structure containing an array and variable count
-- Version 3: List is a structure containing a pointer to the 1st element of a dynamic array, and variable count
-- Version 4: List is a pointer to a structure containing a pointer to the 1st element of a dynamic array, and variable count
-Linked List Implementation (Singly Link)
-Cursor-based Implementation
-Time Complexity of the List operations in different implementations: O(1), O(N), and O(N*N)
-ADT Stack and Implementations
+2. **Linked List Implementation** (Singly Link)
 
-What is an ADT Stack?
-Stack Operations: Top, Pop, Push, and other utility functions such as initStack, isEmpty, and isFull
-Implementations
-Array Implementation (4 versions)
-Linked List Implementation
-Cursor-based Implementation
+3. **Cursor-based Implementation**
+
+Time Complexity: O(1), O(N), and O(N²)
+
+### 3. ADT Stack
+
+#### Overview
+- Stack concept and principles
+- **Stack Operations:**
+  - Top
+  - Pop
+  - Push
+  - Utility functions (initStack, isEmpty, isFull)
+
+#### Implementations
+1. Array Implementation (4 versions)
+2. Linked List Implementation
+3. Cursor-based Implementation
+
 Time Complexity: O(1) and O(N)
-ADT Queue and Implementations
 
-What is an ADT Queue?
-Queue Operations: Front, Dequeue, Enqueue, and other utility functions such as initQueue, isEmpty, and isFull
-Implementations
-Linked List Implementation
-Queue is a pointer to a dynamically allocated node
-Queue is a structure containing front and rear pointers to dynamically allocated node/s
-Circular Array Implementation
-Solution 1: Add a counter
-Solution 2: Queue is full if there are MAX-1 elements
-Note: where MAX is the size of the array
+### 4. ADT Queue
+
+#### Overview
+- Queue concept and principles
+- **Queue Operations:**
+  - Front
+  - Dequeue
+  - Enqueue
+  - Utility functions (initQueue, isEmpty, isFull)
+
+#### Implementations
+1. **Linked List Implementation**
+   - Queue as pointer to dynamic node
+   - Queue as structure with front/rear pointers
+
+2. **Circular Array Implementation**
+   - Solution 1: Counter-based
+   - Solution 2: MAX-1 elements approach
+
 Time Complexity: O(1) and O(N)
-Caution: The Stack and the Queue CANNOT be traversed! (See definition of stack and queue)
 
-Midterm Topics
+> **Note:** Stack and Queue cannot be traversed as per their definitions.
 
-Set and ADT Set
+## Midterm Topics
 
-ADT Set vs. ADT List
-What are the differences between the two?
-ADT's based on Set
-ADT UID
-An ADT based on set with operations Union, Intersection, and set Difference
-Implementations
-Array, Linked list, and cursor-based implementations
-Bit-Vector Implementation
-Computer Word Implementation
-Shift operators: >> and <<
-Bit-wise operators: & ^ | ~
-ADT Dictionary
+### 1. Set and ADT Set
+- Comparison with ADT List
+- **ADT UID Operations:**
+  - Union
+  - Intersection
+  - Difference
 
-An ADT based on set with operations Insert, Delete, and Member
+#### Implementations
+- Array Implementation
+- Linked List Implementation
+- Cursor-based Implementation
+- Bit-Vector Implementation
+- Computer Word Implementation
+  - Shift operators (>>, <<)
+  - Bit-wise operators (&, ^, |, ~)
 
-Two types of Hashing:
+### 2. ADT Dictionary
+- Set-based ADT with Insert, Delete, and Member operations
 
-Open Hashing (or External Hashing)
-Closed Hashing (or Internal Hashing)
-Closed Hashing Terms: Collision, Synonyms, Linear Hashing or Probing, Displacement, Packing Density (Load Factor), Average Search Length, Perfect Hash Function
+### 3. Hashing
+1. **Open Hashing** (External Hashing)
+2. **Closed Hashing** (Internal Hashing)
+   - Key concepts: Collision, Synonyms, Linear Probing
+   - Performance metrics: Load Factor, Average Search Length
+   - External Memory Implementation
 
-Closed Hashing variants
+## Pre-Final Topics
 
-Closed Hashing in external Memory (Files: fopen, fclose, fread, fwrite, fseek)
-Pre-Final Topics
+### 1. ADT Tree
+- Tree concepts and terminology
+- **Traversals:**
+  - Preorder
+  - Inorder
+  - Postorder
 
-ADT Tree and Implementations [Source: Data Structure by Aho, Hopcroft, and Ullman]
+#### Implementations
+- Parent Pointer Implementation
+- List of Children Implementation
+- Binary Trees
+- Expression Trees
+- Huffman Code
 
-Definition of a tree
-Basic concepts and terms related to tree
-Tree Traversals [Preorder, Inorder, Postorder]
-ADT Tree Implementations
-Parent Pointer Implementation
-List of Children Implementation
-Binary Tree definition and Implementations
-Expression Trees
-Huffman Code
-Binary Search Tree (BST) [Sources: There are many sites on the internet such as Geeks for Geeks]
+### 2. Binary Search Tree (BST)
+- Implementation and operations
+- Comparison with AVL trees
+- Binary vs Sequential Search
 
-Description and Implementation
-Operations: Insert, Delete, and Member
-Similarity and Difference between BST and AVL trees
-Binary Search vs. Sequential Search
-ADT Priority Queue
+### 3. ADT Priority Queue
+- Min/Max Heap implementations
+- Heap operations
+- Heapsort algorithm
 
-Partially Ordered Tree (POT)
-Min and Max heap
-MinHeap: Operations: insert and deleteMin [Source: Data Structure by Aho, Hopcroft, and Ullman]
-MaxHeap: Operations: insert and deleteMax [Sources: Internet]
-MinHeapify and MaxHeapify
-Version 1: Insert all elements in an initially empty POT [Source: ebook]
-Version 2: Heapify starting with lowest level parent [Sources: Internet]
-Heapsort Sorting Technique (in place)
+## Final Topics
 
-A sorting algorithm is an "in place" sorting algorithm if there is no additional array used when implementing the sorting process.
-Final Topics
+### Graph Theory
+1. **Graph Types**
+   - Directed
+   - Undirected
 
-Directed and Undirected Graph [Source: Data Structure by Aho, Hopcroft, and Ullman]
-Concepts
-Graph Implementations:
-Adjacency Matrix
-Adjacency List
-Graph Algorithms [Source: Data Structure by Aho, Hopcroft, and Ullman]
-Shortest Paths: Dijkstra's Floyd's, and Warshall's Algorithms
-Traversals: Depth First Search (DFS) and Breadth First Search (BFS)
-Minimum Cost Spanning Tree: Prim's and Kruskal's Algorithms
-References
+2. **Implementations**
+   - Adjacency Matrix
+   - Adjacency List
 
-Mme. Christine Pena
+3. **Algorithms**
+   - Shortest Path Algorithms
+     - Dijkstra's
+     - Floyd's
+     - Warshall's
+   - Graph Traversals
+     - Depth First Search (DFS)
+     - Breadth First Search (BFS)
+   - Minimum Spanning Tree
+     - Prim's Algorithm
+     - Kruskal's Algorithm
+
+## References
+- Ma'am Christine Pena
+- Data Structures by Aho, Hopcroft, and Ullman
