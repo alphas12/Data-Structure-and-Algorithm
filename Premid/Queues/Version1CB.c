@@ -98,15 +98,24 @@ boolean isEmpty(QUEUE Q){
     return(Q.front == -1) ? TRUE : FALSE;
 }
 
-int front
 
-void printQueue(Vheap *Vheap, QUEUE *Q){
-    if(!isEmpty(*Q)){
+void printQueue(QUEUE *Q) {
+    if (!isEmpty(*Q)) {
         QUEUE temp;
         initQueue(&temp);
 
-        while(!isEmpty(*Q)){
-            printf("%d", )
+        while (!isEmpty(*Q)) {
+            int element = dequeue(Q);
+            printf("%d ", element);
+            enqueue(&temp, element);
         }
+        printf("\n");
+
+        // Restore original queue
+        while (!isEmpty(temp)) {
+            enqueue(Q, dequeue(&temp));
+        }
+    } else {
+        printf("Queue is empty\n");
     }
 }
