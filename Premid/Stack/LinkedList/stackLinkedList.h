@@ -81,13 +81,13 @@ void printStack(STACK S){
 
 void insertSorted(STACK *S, int data){
     STACK temp, newStack;
-    initStack(&new);
+    initStack(&newStack);
     
     while(*S != NULL){
         temp = *S;
         *S = temp->next;
-        temp->next = new;
-        new = temp;
+        temp->next = newStack;
+        newStack = temp;
     }
 
     temp = (STACK)malloc(sizeof(struct node));
@@ -95,9 +95,9 @@ void insertSorted(STACK *S, int data){
         temp->data = data;
         temp->next = *S;
         *S = temp;
-        while(new != NULL){
-            temp = new;
-            new = temp->next;
+        while(newStack != NULL){
+            temp = newStack;
+            newStack = temp->next;
             temp->next = *S;
             *S = temp;
         }
