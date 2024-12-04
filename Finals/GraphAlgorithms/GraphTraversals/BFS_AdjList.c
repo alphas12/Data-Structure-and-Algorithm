@@ -86,7 +86,6 @@ void BreadthFirstSearch(AdjList A[], int v) {  // Changed to receive array of Ad
     }
 
     mark[v] = TRUE;
-    printf("%d ", v);  // Print starting vertex
 
     // Enqueue starting vertex
     if(Q.front != (Q.rear + 2) % MAX){
