@@ -3,7 +3,7 @@
 
 #define MAX 7
 
-typedef int AdjMatrix[MAX][MAX];
+
 
 typedef enum{FALSE, TRUE}Boolean;
 
