@@ -17,12 +17,6 @@ typedef struct node{
     struct node *next;
 }*AdjList;
 
-typedef struct{
-    int elem[MAX];
-    int front;
-    int rear;
-} QUEUE;
-
 void initAdjList(AdjList []);
 void setAdjList(AdjList[], Edgetype [], int);
 void DFS(AdjList[], int, Boolean[]);
