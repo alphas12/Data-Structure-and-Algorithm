@@ -77,7 +77,7 @@ void BreadthFirstSearch(AdjList A[], int v) {  // Changed to receive array of Ad
     Q.front = 0;
     Q.rear = MAX - 1;
     int x;
-    AdjList *trav;  // For traversing the adjacency list
+    AdjList trav;  // For traversing the adjacency list
 
     // Set initialize components to false
     Boolean mark[MAX];
@@ -103,9 +103,9 @@ void BreadthFirstSearch(AdjList A[], int v) {  // Changed to receive array of Ad
         Q.front = (Q.front + 1) % MAX;
         
         // Traverse adjacency list of vertex x
-        trav = &(A[x]);
-        while(*trav != NULL) {
-            int y = (*trav)->N.w;  // Get adjacent vertex
+        trav = A[x];
+        while(trav != NULL) {
+            int y = trav->N.w;  // Get adjacent vertex
             if(mark[y] == FALSE) {
                 mark[y] = TRUE;
                 printf("%d ", y);
@@ -118,7 +118,7 @@ void BreadthFirstSearch(AdjList A[], int v) {  // Changed to receive array of Ad
                     T[T_count].w = y;
                     T_count++;
             }
-            trav = &(*trav)->next;
+            trav = trav->next;
         }
     }
 
