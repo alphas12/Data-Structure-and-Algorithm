@@ -21,7 +21,7 @@ typedef struct{
 typedef struct{
     minHeapOrList eList;
     int cost;
-} MST; //Apply to Kruskals only
+} MST;
 
 void initHeap(minHeapOrList *);
 void insertMinHeap(minHeapOrList *, edgetype edge);
@@ -53,12 +53,11 @@ int main(){
     int size = sizeof(arr) / sizeof(arr[0]);
     LabAdjM(M, arr, size);
 
-    MST result = Kruskals(M);
-    printf("KRUSKALS");
-    printMST(result);
-    MST result2 = Prims(M, 3);
-    printf("PRIMS");
-    printMST(result2);
+    MST K = Kruskals(M);
+    printf("======Kruskal======");
+    MST P = Prims(M, 0);
+    printf("======Prims======");
+    printMST(P);
     return 0;
 }
 
@@ -167,6 +166,51 @@ MST Kruskals(LabelAdjMat A){
     }
 
     return Kruskals;
+}
+
+MST Prims(LabelAdjMat A, int start){
+
+    MST Prims = {.eList.lastNdx = -1, .cost = 0};
+    minHeapOrList PQ = {.lastNdx = -1};
+    Boolean visited[MAX];
+
+    for(int i = 0; i < MAX; i++){
+        visited[i] = FALSE;
+    }
+
+    visited[start] = TRUE;
+
+    int i;
+    for(i = 0; i < MAX; i++){
+        if(A[start][i] != infinity) {
+            edgetype edgeList = {start, i, A[start][i]};
+            insertMinHeap(&PQ, edgeList);
+        }
+    }
+
+    int numEdges = MAX - 1;
+
+    while(Prims.eList.lastNdx + 1 < numEdges){
+        edgetype min = deleteMinheap(&PQ);
+
+        if(visited[min.u] != visited[min.v]){
+            Prims.cost += min.weight;
+            Prims.eList.edges[++Prims.eList.lastNdx] = min;
+
+            int notVisited = (visited[min.u] == FALSE) ? min.u : min.v;
+            visited[notVisited] = TRUE; // set notVisited to visited
+
+
+             // add newly potential edges to the MinHeap 
+            for(int i = 0; i < MAX; i++) {
+                if(A[notVisited][i] != infinity && visited[i] == FALSE) {
+                    edgetype edgeList = {notVisited, i, A[notVisited][i]};
+                    insertMinHeap(&PQ, edgeList);
+                }
+            }
+        }
+    }
+    return Prims;
 }
 
 
