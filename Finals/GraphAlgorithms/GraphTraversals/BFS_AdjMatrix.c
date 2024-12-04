@@ -3,6 +3,7 @@
 
 #define MAX 7
 
+typedef int AdjMatrix[MAX][MAX];
 
 typedef enum{FALSE, TRUE}Boolean;
 
@@ -11,20 +12,15 @@ typedef struct{
     int w;
 }Edgetype;
 
-typedef struct node{
-    Edgetype N;
-    struct node *next;
-}*AdjList;
-
 typedef struct{
     int elem[MAX];
     int front;
     int rear;
 } QUEUE;
 
-void initAdjList(AdjList []);
-void setAdjList(AdjList[], Edgetype [], int);
-void BreadthFirstSearch(AdjList[], int);
+void initAdjMatrix(AdjMatrix);
+void setAdjMatrix(AdjMatrix, Edgetype [], int);
+void BFS(AdjMatrix, int);
 
 int main(){
     Edgetype arr[] = {{0, 1}, {0, 3}, {0, 2},
@@ -38,46 +34,39 @@ int main(){
 
     int size = sizeof(arr)/sizeof(arr[0]);
 
-    AdjList A[MAX];
-    initAdjList(A);
-    setAdjList(A, arr, size);
-    BreadthFirstSearch(A, 2);
+    AdjMatrix A;
+    initAdjMatrix(A);
+    setAdjMatrix(A, arr, size);
+
+    BFS(A, 0);
 
     return 0;
 }
 
-void initAdjList(AdjList A[]){
-    int i;
+void initAdjMatrix(AdjMatrix M){
+    int i, j;
     for(i = 0; i < MAX; i++){
-        A[i] = NULL;
-    }
-}
-
-void setAdjList(AdjList A[],Edgetype arr[], int size){
-    int i;
-    AdjList *trav;
-    for(i = 0; i < size; i++){
-        trav = &(A[arr[i].u]);
-        AdjList temp = (AdjList)malloc(sizeof(struct node));
-        if(temp != NULL){
-            temp->N.u = arr[i].u;
-            temp->N.w = arr[i].w;
-            temp->next = NULL;
-            while(*trav != NULL){
-                trav = &(*trav)->next;
-            }
-            *trav = temp;
+        for(j = 0; j < MAX; j++){
+            M[i][j] = 0;
         }
     }
 }
 
-void BreadthFirstSearch(AdjList A[], int v) { 
+void setAdjMatrix(AdjMatrix M,Edgetype arr[], int size){
+   int i;
+   for(i = 0; i < size; i++){
+        M[arr[i].u][arr[i].w] = 1;
+        M[arr[i].u][arr[i].w] = 1;
+   }
+}
+
+
+
+void BFS(AdjMatrix M, int v){ 
     QUEUE Q;    
     Q.front = 0;
     Q.rear = MAX - 1;
-    int x;
-    AdjList trav;  // For traversing the adjacency list
-
+    int curr;
     // Set initialize components to false
     Boolean mark[MAX];
     for(int u = 0; u < MAX; u++) {
@@ -96,28 +85,26 @@ void BreadthFirstSearch(AdjList A[], int v) {
     Edgetype T[MAX];
     int T_count = 0;
 
-    while(Q.front != (Q.rear + 1) % MAX) {  // While queue is not empty
+    while(Q.front != (Q.rear + 1) % MAX) { 
         // Dequeue
-        x = Q.elem[Q.front];
+        curr = Q.elem[Q.front];
         Q.front = (Q.front + 1) % MAX;
         
         // Traverse adjacency list of vertex x
-        trav = A[x];
-        while(trav != NULL) {
-            int y = trav->N.w;  // Get adjacent vertex
-            if(mark[y] == FALSE) {
-                mark[y] = TRUE;
-                printf("%d ", y);
+        int x;
+        for(x = 0; x < MAX; x++) {
+            if(M[curr][x] != 0 && mark[x] == FALSE) {
+                mark[x] = TRUE;
+                printf("%d ", x);
                 // Enqueue if queue is not full
                     Q.rear = (Q.rear + 1) % MAX;
-                    Q.elem[Q.rear] = y;
+                    Q.elem[Q.rear] = x;
 
 
-                    T[T_count].u = x;
-                    T[T_count].w = y;
+                    T[T_count].u = curr;
+                    T[T_count].w = x;
                     T_count++;
             }
-            trav = trav->next;
         }
     }
 
@@ -128,6 +115,5 @@ void BreadthFirstSearch(AdjList A[], int v) {
     }
     printf("\n");
 }
-
 
 
