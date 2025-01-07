@@ -1,14 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 #define SIZE 10
+
 typedef struct{
     int arr[SIZE];
     int count;
 }LIST;
 
 typedef int Position;
-
 
 void initLIST(LIST *);
 void insertAtPos(LIST *, char, Position);
