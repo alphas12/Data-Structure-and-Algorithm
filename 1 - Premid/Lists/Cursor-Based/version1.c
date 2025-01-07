@@ -69,16 +69,6 @@ boolean isEqualList(VHeap VH, LIST L, LIST M){ //sorted
 }
 
 
-// boolean isEqualList(VHeap VH, LIST L, LIST M){//unsorted
-//     LIST trav, trav2, isEqual = 1;
-//     for(trav = L; trav != -1 && isEqual == 1; trav = VH.Nodes[trav].next){
-//         for(trav2 = M; trav2 != -1 && VH.Nodes[trav].data != VH.Nodes[trav2].data; trav2 = VH.Nodes[trav2].next){}
-//             if(trav2 == -1) isEqual == 0;
-// 	}
-//     return(isEqual == 1) ? TRUE : FALSE;
-// }
-
-
 
 void initVirtualHeap(VHeap * VH){
     int i;
