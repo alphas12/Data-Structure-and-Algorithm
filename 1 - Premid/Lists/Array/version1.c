@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define SIZE 10
-
 typedef struct{
     int arr[SIZE];
     int count;
@@ -59,14 +58,14 @@ void deleteAtPos(LIST *L, Position P){
         for(i = P; i < L->count; i++){
 	        L->arr[i] = L->arr[i + 1]; //curr = next;
         }
-	        --L->count;
+	        --(L->count);
     }
 }
 
-void deleteAllOccur(LIST *L, char x){ //1,1,2,2,4,4
+void deleteAllOccur(LIST *L, char x){ //delete all occurences of x in L
 	int i, y;
 	for(i = 0; i < L->count; ){
-		if(x == L->arr[i]){ //1 = 1
+		if(x == L->arr[i]){ //if x is found at position i
 			for(y = i; y < L->count - 1; y++){
 				L->arr[y] = L->arr[y+1];
 			}
